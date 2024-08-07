@@ -1,0 +1,7 @@
+Luis	35988088129	Alfenas	luis.felipe@gmail.com	
+Joao	33991734253	Guaxupé	joao.gabriel@gmail.com	
+Diogo	19971071905	Limeira	diogo@gmail.com	
+Miguel	16997984670	Ribeirão_Preto	miguel.leone@gmail.com	
+Bressan	35987456127	Alfenas	bressan@gmail.com	
+Santiago	78978978963	Alfenas	santiago@gmail.com	
+fim
