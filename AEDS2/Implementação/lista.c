@@ -101,7 +101,7 @@ no *removeLista(no l[], int *n, int x, int m)
             (*no_retorno).chave = l[indice].chave;
             (*no_retorno).valor = l[indice].valor;
         }
-        for (int i = indice; i <= (*n) - 1; i++)
+        for (int i = indice; i < (*n); i++)
         {
             l[i].chave = l[i + 1].chave;
             l[i].valor = l[i + 1].valor;
@@ -152,7 +152,7 @@ int main()
                 }
             }
         }
-        if (resposta == 2)
+        else if (resposta == 2)
         {
             int x;
             printf("Digite a chave que quer remover: ");
@@ -162,15 +162,19 @@ int main()
             {
                 printf("\n Chave removida: %d", temp->chave);
                 printf("\n Valor removido: %d", temp->valor);
-                printf("\n Posição na lista: %d", (n-1));
+                printf("\n Posição na lista: %d", (n - 1));
             }
             free(temp);
         }
-        if (resposta == 3)
+        else if (resposta == 3)
         {
             imprimeLista(lista, n);
+            if (n <= 0)
+            {
+                printf("\n Lista vazia");
+            }
         }
-        if (resposta == 4)
+        else if (resposta == 4)
         {
             int x;
             printf("Digite a chave que quer buscar: ");
@@ -186,10 +190,6 @@ int main()
                 printf("\n Valor encontrado: %d", lista[temp].valor);
                 printf("\n Posição na lista: %d", temp);
             }
-        }
-        if (n <= 0)
-        {
-            printf("\n Lista vazia");
         }
     }
 
