@@ -17,15 +17,15 @@ void imprimeLista(no l[], int n)
     }
 }
 
-int busca(no l[], int x, int m)
+int busca(no l[], int x, int n)
 {
-    l[m].chave = x;
+    l[n+1].chave = x;
     int i = 0;
     while (l[i].chave != x)
     {
         i++;
     }
-    if (i == m)
+    if (i == (n+1))
     {
         return -1;
     }
@@ -36,7 +36,7 @@ int insereLista(no l[], int *n, int m, no x)
 {
     if (*n < (m - 1))
     {
-        if (busca(l, x.chave, m) == -1)
+        if (busca(l, x.chave, *n) == -1)
         {
             (*n)++;
             l[*n] = x;
@@ -94,28 +94,28 @@ no *removeLista(no l[], int *n, int x, int m)
     no *no_retorno = NULL;
     if (*n != -1)
     {
-        indice = busca(l, x, m);
+        indice = busca(l, x, *n);
         if (indice != -1)
         {
             no_retorno = malloc(sizeof(no));
             (*no_retorno).chave = l[indice].chave;
             (*no_retorno).valor = l[indice].valor;
+            for (int i = indice; i < (*n); i++)
+            {
+                l[i].chave = l[i + 1].chave;
+                l[i].valor = l[i + 1].valor;
+            }
+            (*n)--;
         }
-        for (int i = indice; i < (*n); i++)
-        {
-            l[i].chave = l[i + 1].chave;
-            l[i].valor = l[i + 1].valor;
-        }
-        (*n)--;
     }
     return no_retorno;
 }
 
-void main()
+int main()
 {
     int m;
     printf("Digite o tamanho da lista: ");
-    scanf(" %d", &m);
+    scanf("%d", &m);
     no lista[m + 1];
     // n é o indice do ultimo elemento
     int n = -1;
@@ -156,13 +156,12 @@ void main()
         {
             int x;
             printf("Digite a chave que quer remover: ");
-            scanf(" %d", &x);
+            scanf("%d", &x);
             no *temp = removeLista(lista, &n, x, m);
             if (temp != NULL)
             {
                 printf("\n Chave removida: %d", temp->chave);
                 printf("\n Valor removido: %d", temp->valor);
-                printf("\n Posição na lista: %d", (n - 1));
             }
             free(temp);
         }
@@ -179,7 +178,7 @@ void main()
             int x;
             printf("Digite a chave que quer buscar: ");
             scanf(" %d", &x);
-            int temp = busca(lista, x, m);
+            int temp = busca(lista, x, n);
             if (temp == -1)
             {
                 printf("\n Valor não encontrado!");
@@ -192,4 +191,6 @@ void main()
             }
         }
     }
+
+    return 0;
 }
