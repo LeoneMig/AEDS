@@ -90,7 +90,25 @@ void ler_menu(int *resposta)
 
 no *removeLista(no l[], int *n, int x, int m)
 {
-
+    int indice = -1;
+    no *no_retorno = NULL;
+    if (*n != -1)
+    {
+        indice = busca(l, x, m);
+        if (indice != -1)
+        {
+            no_retorno = malloc(sizeof(no));
+            (*no_retorno).chave = l[indice].chave;
+            (*no_retorno).valor = l[indice].valor;
+        }
+        for (int i = indice; i <= (*n) - 1; i++)
+        {
+            l[i].chave = l[i + 1].chave;
+            l[i].valor = l[i + 1].valor;
+        }
+        (*n)--;
+    }
+    return no_retorno;
 }
 
 int main()
@@ -144,8 +162,9 @@ int main()
             {
                 printf("\n Chave removida: %d", temp->chave);
                 printf("\n Valor removido: %d", temp->valor);
-                printf("\n Posição na lista: %d", n);
+                printf("\n Posição na lista: %d", (n-1));
             }
+            free(temp);
         }
         if (resposta == 3)
         {
