@@ -111,7 +111,7 @@ no *removeLista(no l[], int *n, int x, int m)
     return no_retorno;
 }
 
-int main()
+void main()
 {
     int m;
     printf("Digite o tamanho da lista: ");
@@ -192,6 +192,4 @@ int main()
             }
         }
     }
-
-    return 0;
 }
