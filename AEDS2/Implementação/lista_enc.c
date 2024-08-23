@@ -31,6 +31,39 @@ void busca(int x, no **ant, no **pont, no *ptLista)
     }
 }
 
+int insere(no *no_insere, no *ptLista)
+{
+    no *ant;
+    no *pont;
+    busca(no_insere->chave, &ant, &pont, ptLista);
+    if (pont == NULL)
+    {
+        no_insere->prox = ant->prox;
+        ant->prox = no_insere;
+        return 0;
+    }
+    else
+    {
+        return -1;
+    }
+}
+
+no *remove(int x, no *ptLista)
+{
+    no *ant;
+    no *pont;
+    busca(x, &ant, &pont, ptLista);
+    if (pont != NULL)
+    {
+        ant->prox = pont->prox;
+        return pont;
+    }
+    else
+    {
+        return NULL;
+    }
+}
+
 void ler_menu(int *resposta)
 {
     printf("\n-----------------------\n");
