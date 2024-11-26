@@ -13,5 +13,7 @@ typedef struct player_{
 }player;
 
 void criaBD(player *player_list);
+player *alocar(player leitor);
+player *insere(player *player_list, player *n);
 
 #endif // _H_FUNCS
